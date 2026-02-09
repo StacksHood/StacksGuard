@@ -5,8 +5,8 @@ Detailed development tasks for the StacksGuard protection layer.
 ## 🛠️ Smart Contract Issues
 
 ### Phase 1: Escrow & Refund Logic
-- [ ] **Issue #1**: Implement Escrow Vault Storage
-  - Define maps for holding user contributions securely.
+- [x] **Issue #1**: Implement Escrow Vault Storage
+  - ✅ Designed secure mapping for holding contributor funds.
 - [ ] **Issue #2**: Implement Refund Trigger Function
   - Add conditional logic to enable refunds on project failure.
 - [ ] **Issue #3**: Implement User Claim Function

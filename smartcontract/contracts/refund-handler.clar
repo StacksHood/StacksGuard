@@ -1,12 +1,31 @@
-;; Refund Handler
+;; StacksGuard - Refund Handler
+;; Trustless investor protection layer
 
-(define-map contributions { campaign-id: uint, contributor: principal } uint)
+;; --- Data Maps and Vars ---
 
-(define-public (request-refund (campaign-id uint))
-  (let ((amount (default-to u0 (map-get? contributions { campaign-id: campaign-id, contributor: tx-sender }))))
-    (asserts! (> amount u0) (err u100))
-    (try! (as-contract (stx-transfer? amount tx-sender tx-sender)))
-    (map-delete contributions { campaign-id: campaign-id, contributor: tx-sender })
-    (ok amount)
+(define-map escrow-vault
+  { campaign-id: uint, contributor: principal }
+  {
+    amount: uint,
+    can-refund: bool,
+    timestamp: uint
+  }
+)
+
+(define-constant contract-owner tx-sender)
+(define-constant ERR-NOT-AUTHORIZED (err u100))
+(define-constant ERR-NO-CONTRIBUTION (err u101))
+
+;; --- Public Functions ---
+
+(define-public (record-contribution (campaign-id uint) (contributor principal) (amount uint))
+  (begin
+    (asserts! (is-eq tx-sender contract-owner) ERR-NOT-AUTHORIZED)
+    (ok (map-set escrow-vault { campaign-id: campaign-id, contributor: contributor } 
+      { 
+        amount: amount, 
+        can-refund: false,
+        timestamp: block-height
+      }))
   )
 )
