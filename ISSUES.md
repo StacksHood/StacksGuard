@@ -7,8 +7,8 @@ Detailed development tasks for the StacksGuard protection layer.
 ### Phase 1: Escrow & Refund Logic
 - [x] **Issue #1**: Implement Escrow Vault Storage
   - ✅ Designed secure mapping for holding contributor funds.
-- [ ] **Issue #2**: Implement Refund Trigger Function
-  - Add conditional logic to enable refunds on project failure.
+- [x] **Issue #2**: Implement Refund Trigger Function
+  - ✅ Added conditional logic to enable refunds on project failure.
 - [ ] **Issue #3**: Implement User Claim Function
   - Functions for users to pull back their funds trustlessly.
 

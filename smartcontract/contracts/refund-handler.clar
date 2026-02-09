@@ -29,3 +29,10 @@
       }))
   )
 )
+
+(define-public (enable-refunds (campaign-id uint) (contributor principal))
+  (let ((entry (unwrap! (map-get? escrow-vault { campaign-id: campaign-id, contributor: contributor }) ERR-NO-CONTRIBUTION)))
+    (asserts! (is-eq tx-sender contract-owner) ERR-NOT-AUTHORIZED)
+    (ok (map-set escrow-vault { campaign-id: campaign-id, contributor: contributor } (merge entry { can-refund: true })))
+  )
+)
