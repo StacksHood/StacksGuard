@@ -15,8 +15,8 @@ Detailed development tasks for the StacksGuard protection layer.
   - ✅ Built `claim-refund` public function with reentrancy-safe pattern.
 
 ### Phase 2: Safety & Security
-- [ ] **Issue #4**: Add Reentrancy Guards & Timelocks
-  - [ ] Implement global mutex for state-changing calls.
+- [x] **Issue #4**: Add Reentrancy Guards & Timelocks
+  - ✅ Implemented global reentrancy lock for state-changing calls.
 - [ ] **Issue #5**: Implement Multi-sig Refund Authorization
   - [ ] Ensure multiple administrators must sign off on project "FAILURE".
 
