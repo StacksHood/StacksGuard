@@ -40,10 +40,16 @@
 )
 
 (define-public (claim-refund (campaign-id uint))
-  (let ((entry (unwrap! (map-get? escrow-vault { campaign-id: campaign-id, contributor: tx-sender }) ERR_NO_CONTRIBUTION)))
-    (asserts! (get can-refund entry) (err u102))
-    (try! (as-contract (stx-transfer? (get amount entry) (as-contract tx-sender) tx-sender)))
-    (ok (map-delete escrow-vault { campaign-id: campaign-id, contributor: tx-sender }))
+  (begin
+    (asserts! (not (var-get reentrancy-lock)) (err u103))
+    (var-set reentrancy-lock true)
+    (let ((entry (unwrap! (map-get? escrow-vault { campaign-id: campaign-id, contributor: tx-sender }) ERR_NO_CONTRIBUTION)))
+      (asserts! (get can-refund entry) (err u102))
+      (try! (as-contract (stx-transfer? (get amount entry) (as-contract tx-sender) tx-sender)))
+      (map-delete escrow-vault { campaign-id: campaign-id, contributor: tx-sender })
+      (var-set reentrancy-lock false)
+      (ok true)
+    )
   )
 )
 
