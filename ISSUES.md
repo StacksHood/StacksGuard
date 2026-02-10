@@ -11,10 +11,8 @@ Detailed development tasks for the StacksGuard protection layer.
   - ✅ Designed secure mapping for holding contributor funds.
 - [x] **Issue #2**: Implement Refund Trigger Function
   - ✅ Added conditional logic to enable refunds on project failure.
-- [ ] **Issue #3**: Implement User Claim Function
-  - [ ] Build `claim-refund` public function.
-  - [ ] Add reentrancy protection during STX transfer.
-  - [ ] Clear contribution record upon successful claim.
+- [x] **Issue #3**: Implement User Claim Function
+  - ✅ Built `claim-refund` public function with reentrancy-safe pattern.
 
 ### Phase 2: Safety & Security
 - [ ] **Issue #4**: Add Reentrancy Guards & Timelocks
