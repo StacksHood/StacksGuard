@@ -3,6 +3,8 @@
 
 ;; --- Data Maps and Vars ---
 
+(define-data-var reentrancy-lock bool false)
+
 (define-map escrow-vault
   { campaign-id: uint, contributor: principal }
   {
