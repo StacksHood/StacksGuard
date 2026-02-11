@@ -25,14 +25,14 @@ Detailed development tasks for the StacksGuard protection layer.
 ## 💻 Frontend Issues
 
 ### Phase 3: Dashboard & Safety
-- [ ] **Issue #6**: Security Dashboard UI
-  - [ ] Clean terminal-inspired interface focused on safety.
-- [ ] **Issue #7**: Auth Provider & Session Management
-  - [ ] Core integration of Stacks Connect.
+- [x] **Issue #6**: Security Dashboard UI
+  - ✅ Clean terminal-inspired interface focused on safety.
+- [x] **Issue #7**: Auth Provider & Session Management
+  - ✅ Implemented Stacks Connect integration and role-based access.
 
 ### Phase 4: Protection Tools
-- [ ] **Issue #8**: Contribution Safety Monitor
-  - [ ] View total funds held in escrow vs projected releases.
+- [x] **Issue #8**: Contribution Safety Monitor
+  - ✅ Real-time escrow tracking and fund management visualization.
 - [ ] **Issue #9**: Trustless Refund Claim Interface
   - [ ] Direct interaction for contributors to pull back assets.
 - [ ] **Issue #10**: Project Risk Visualization
